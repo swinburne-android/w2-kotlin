@@ -1,4 +1,3 @@
-Kotlin basic syntax. order:
-Main.kt
-Basics.kt
-Lists.kt
+Kotlin basic syntax
+
+entry point is Main.kt 

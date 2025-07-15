@@ -11,7 +11,6 @@ fun playWithLists() {
     var imList = listOf<String>("a", "b") // immutable
     var mList = mutableListOf("a", "b") //mutable
 
-
     arrayOf("") //mutable always
     var mylist = intArrayOf(1, 2) //mutable
 

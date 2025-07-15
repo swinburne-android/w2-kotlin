@@ -1,8 +1,8 @@
 
 package mypackage
 
-
-fun main() {
+//public function is default.
+fun testVars() {
     var street: Int = 1 //create a var. this is NOT a dynamic type. its a mutable var
     var num: String = "xx"
     var xx = "xxx" //infers the type
@@ -26,7 +26,7 @@ fun ifelseFunction (name:String?): String {
 
 //elvis symbol
 //If the expression to the left of ?: is not null, the Elvis operator returns it, otherwise it returns the expression to the right
-fun elivsTest(name : String?){
+private fun elivsTest(name : String?){
     val v1 = null
     val v2 = "v2"
     val v3 = null
