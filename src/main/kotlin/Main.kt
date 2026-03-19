@@ -1,7 +1,8 @@
 import mypackage.*
 
 
-//main function is the entry point into the Kotlin application. folder sorc/main/kotlin should be set as source root (right click on it in the project view and select "Mark Directory as" -> "Sources Root")
+//main function is the entry point into the Kotlin application. folder src/main/kotlin
+// should be set as source root (right click on it in the project view and select "Mark Directory as" -> "Sources Root")
 fun main(args : Array<String>) {
     print("hi ")
     println("hello world") //println is a function that prints to the console and adds a new line at the end

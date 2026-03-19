@@ -1,64 +1,66 @@
-
 package mypackage
 
-//public function is default.
+// Public function is the default visibility.
 fun testVars() {
-    var street: Int = 1 //create a var. this is NOT a dynamic type. its a mutable var
+    var street: Int = 1 // 'var' is a mutable variable (can be reassigned).
     var num: String = "xx"
-    var xx = "xxx" //infers the type
+    var xx = "xxx" // Type inference: Kotlin knows this is a String.
 
-    val xyz = 1 //immuatable variable.
+    val xyz = 1 // 'val' is an immutable (read-only) variable. 
+    // Tip for students: Use 'val' by default. Use 'var' only if the value must change.
 
-    //var is mutable val is immutable
-
-
-    elivsTest(null)
+    elvisTest(null)
+    stringTemplates("Kotlin")
 }
 
-//if-else doesn't need return. it has it inbuilt
-//? makes it nullable
-//implicit return type
-fun ifelseFunction (name:String?): String {
+// String templates allow you to easily inject variables or expressions into strings.
+fun stringTemplates(name: String) {
+    println("Hello, $name!") // Using a variable
+    println("The name has ${name.length} characters.") // Using an expression
+}
+
+// if-else is an expression in Kotlin, meaning it can return a value.
+fun ifelseFunction(name: String?): String {
     return if (name == null)
         "abc"
     else name
 }
 
-//elvis symbol
-//If the expression to the left of ?: is not null, the Elvis operator returns it, otherwise it returns the expression to the right
-private fun elivsTest(name : String?){
-    val v1 = null
+// Elvis operator (?:)
+// If the expression to the left is not null, it returns it; otherwise, it returns the right side.
+private fun elvisTest(name : String?){
+    val v1: String? = null
     val v2 = "v2"
-    val v3 = null
+    val v3: String? = null
 
     val r1 = v1 ?: v2
-    println(r1) // what does this print?
+    println(r1) // Prints "v2"
 
-    val r2 = v2?.length ?: -1
-    println(r2) // what does this print?
+    val r2 = v2.length // v2 is non-nullable, so we don't need ?.
+    println(r2)
 
-
-    val r3 = v3 ?: -1
-    println(r3) // what does this print?
-
+    val r3 = v3 ?: "Default Value"
+    println(r3)
 }
 
-//any return type. Any is the root of the Kotlin class hierarchy. Every Kotlin class has Any as a superclass. It is equivalent to Object in Java.  When a function is declared to return Any, it means that the function can return a value of any type
-fun testAnyReturn(input: Integer): Any{
-    if (input.equals(1))
+// 'Any' is the root of the Kotlin class hierarchy, similar to Object in Java.
+fun testAnyReturn(input: Int): Any {
+    if (input == 1)
         return "aa"
     return 0
 }
 
-
-//class definition. variable name is the property of the class and is immutable but address is mutable property
-class Customer(val name : String){
-    var address = ""
-    fun xx(){}
+// Class definition. 'name' is a property from the primary constructor.
+class Customer(val name: String) {
+    var address: String = "" 
+    
+    fun greet() {
+        println("Hello $name")
+    }
 }
 
-fun testWhen(numberOfFish: Int ){
-    //when is like switch
+fun testWhen(numberOfFish: Int) {
+    // 'when' is the Kotlin equivalent of 'switch', but more powerful.
     when (numberOfFish) {
         0  -> println("Empty tank")
         in 1..39 -> println("Got fish!")
@@ -66,20 +68,16 @@ fun testWhen(numberOfFish: Int ){
     }
 }
 
+// Null safety is a core feature of Kotlin.
+fun testNull() {
+    var abc: Int? = 7 // The '?' makes the Int nullable.
 
-//test null with ?
-//You can test for null with the ? operator, saving you the pain of writing many if/else statements.
-fun testNull(){
-    var abc = 7
-
-    if (abc != null){
-        abc.dec()
-    }
-
-    //another way of checking for null
+    // Safe call operator (?.)
+    // If 'abc' is null, dec() isn't called, and the result is null.
     abc?.dec()
+
+    // The 'let' function is used to execute code only if the value is not null.
+    abc?.let {
+        println("abc is not null. Its value is $it")
+    }
 }
-
-
-
-
